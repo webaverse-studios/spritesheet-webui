@@ -26,8 +26,8 @@ function App() {
 
       const bytes = resp.data;
       const arrayBufferView = new Uint8Array(bytes);
-      length = arrayBufferView;
-      console.log(resp.data);
+      length = arrayBufferView.length;
+      console.log(arrayBufferView);
       const blob = new Blob([arrayBufferView], { type: "image/png" });
       const url = URL.createObjectURL(blob);
       setImg(url);
