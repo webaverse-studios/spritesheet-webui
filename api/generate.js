@@ -34,7 +34,7 @@ const allowCors = (fn) => async (req, res) => {
 
 const handler = async (req, res) => {
   // get the "s" param from the query string
-  const { s } = req.s;
+  const { s } = req.query;
   console.log("received request");
   // redirect POST request to https://stable-diffusion.webaverse.com/mod
   // then return response to original requester
