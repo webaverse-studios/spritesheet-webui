@@ -16,17 +16,22 @@ function App() {
 
     setGenerating(true);
 
-    const resp = await axios.get(API_URL, {
-      params: { s: prompt },
-      responseType: "arraybuffer",
-    });
+    let length = 0;
+    while (length <= 270) {
+      console.log("generating because length is:", length);
+      const resp = await axios.get(API_URL, {
+        params: { s: prompt },
+        responseType: "arraybuffer",
+      });
 
-    const bytes = resp.data;
-    const arrayBufferView = new Uint8Array(bytes);
-    console.log(resp.data);
-    const blob = new Blob([arrayBufferView], { type: "image/png" });
-    const url = URL.createObjectURL(blob);
-    setImg(url);
+      const bytes = resp.data;
+      const arrayBufferView = new Uint8Array(bytes);
+      length = arrayBufferView;
+      console.log(resp.data);
+      const blob = new Blob([arrayBufferView], { type: "image/png" });
+      const url = URL.createObjectURL(blob);
+      setImg(url);
+    }
 
     setGenerating(false);
   };
